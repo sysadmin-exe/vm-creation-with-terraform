@@ -24,7 +24,11 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 
-**/__pycache__
+**/__pycache__/
+**/__pycache__/
+**/**/__pycache__/
 __pycache__
+**/*.pyc
+**/**/*.pyc
 
 **/*.tfplan
