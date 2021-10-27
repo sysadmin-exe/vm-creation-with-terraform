@@ -22,3 +22,5 @@ jobs:
       run: |
         pip3 install -r ec2Controller/requirements.txt
         python3 ec2Controller/manage.py test   
+      env:
+        SECRET_KEY: ${{ secrets.SECRET_KEY}}
