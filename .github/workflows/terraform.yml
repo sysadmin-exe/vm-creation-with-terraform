@@ -5,7 +5,7 @@ on:
       - main
   pull_request:
     paths:
-    - 'resources/**'
+    - 'resources/**/.tf'
     - '.github/workflows/terraform.yml'
 
 jobs:
@@ -28,7 +28,7 @@ jobs:
 
     - name: Terraform Init
       id: init
-      run: terraform init resources/**/*.tf
+      run: terraform init -chdir resources/**/*.tf
 
     - name: Terraform Validate
       id: validate
