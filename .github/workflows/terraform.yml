@@ -5,7 +5,7 @@ on:
       - main
   pull_request:
     paths:
-    - 'aws/**'
+    - 'resources/**'
     - '.github/workflows/terraform.yml'
 
 jobs:
