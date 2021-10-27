@@ -24,19 +24,19 @@ jobs:
 
     - name: Terraform Format
       id: fmt
-      run: terraform fmt -check
+      run: terraform fmt -check resources/**/*.tf
 
     - name: Terraform Init
       id: init
-      run: terraform init
+      run: terraform init resources/**/*.tf
 
     - name: Terraform Validate
       id: validate
-      run: terraform validate -no-color
+      run: terraform validate -no-color resources/**/*.tf
 
     - name: Terraform Plan
       id: plan
-      run: terraform plan -no-color
+      run: terraform plan -no-color resources/**/*.tf
       continue-on-error: true
 
     - name: Update Pull Request
@@ -74,5 +74,5 @@ jobs:
 
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: echo "something works" # terraform apply -auto-approve
+      run: echo "something works" # terraform apply -auto-approve resources/**/*.tf
 
