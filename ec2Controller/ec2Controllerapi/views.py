@@ -18,7 +18,7 @@ def getInstanceId():
 # Get instance tag
 def getInstanceTag(request):
 
-    instance=ec2_resource.instance(getInstanceId())
+    instance=ec2.instance(getInstanceId())
     response=instance.tags
   
     return {
