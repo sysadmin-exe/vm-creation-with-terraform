@@ -4,10 +4,10 @@ import subprocess
 import boto3
 import json
 
-#region = 'us-east-1'
-#ec2 = boto3.client('ec2', region_name=region)
-ec2_client = boto3.client('ec2')
-ec2_resource = boto3.resource('ec2')
+region = 'eu-central-1'
+ec2 = boto3.client('ec2', region_name=region)
+# ec2_client = boto3.client('ec2')
+# ec2_resource = boto3.resource('ec2')
 
 # Get instance ID from metadata
 def getInstanceId():
@@ -17,9 +17,8 @@ def getInstanceId():
 
 # Get instance tag
 def getInstanceTag(request):
-    instance_id = getInstanceId()
-    
-    instance=ec2_resource.instance(getInstanceId())
+
+    instance=ec2.instance(getInstanceId())
     response=instance.tags
   
     return {
@@ -32,7 +31,7 @@ def shutdownInstance(request):
     instance_id = getInstanceId()
 
     print("STOPping your instance: " + str(instance_id))
-    ec2_client.instances.filter(InstanceIds = instance_id).stop()
+    ec2.stop_instances(InstanceIds=instance_id)
     response = "Successfully stopped instances: " + str(instance_id)
         
     return {
