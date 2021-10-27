@@ -6,7 +6,7 @@ on:
   pull_request:
     paths:
     - 'resources/**/.tf'
-    - '.github/workflows/terraform.yml'
+    - '.github/workflows/aws-terraform.yml'
 
 jobs:
   Terraform-Deploy:
