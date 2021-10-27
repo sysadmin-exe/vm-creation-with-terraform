@@ -10,9 +10,9 @@ terraform {
     bucket = "mysterio"
     key    = "terraform/states"
     region = "eu-west-1"
-  }  
+  }
 }
- 
+
 provider "aws" {
   profile = "default"
   region  = var.aws_region

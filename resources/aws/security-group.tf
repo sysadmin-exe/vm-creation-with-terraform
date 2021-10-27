@@ -1,14 +1,14 @@
 # create-sg.tf
- 
+
 data "http" "myip" {
   url = "http://ipv4.icanhazip.com"
 }
- 
+
 resource "aws_security_group" "sg" {
   name        = "${var.owner}-sg"
   description = "Allow inbound traffic via SSH"
   vpc_id      = aws_vpc.vpc.id
- 
+
   ingress = [{
     description      = "My public IP"
     protocol         = var.sg_ingress_proto
@@ -19,9 +19,9 @@ resource "aws_security_group" "sg" {
     prefix_list_ids  = []
     security_groups  = []
     self             = false
- 
+
   }]
- 
+
   egress = [{
     description      = "All traffic"
     protocol         = var.sg_egress_proto
@@ -32,9 +32,9 @@ resource "aws_security_group" "sg" {
     prefix_list_ids  = []
     security_groups  = []
     self             = false
- 
+
   }]
- 
+
   tags = {
     "Owner" = var.owner
     "Name"  = "${var.owner}-sg"
