@@ -6,7 +6,7 @@ on:
   pull_request:
     paths:
     - 'resources/**/.tf'
-    - '.github/workflows/terraform.yml'
+    - '.github/workflows/aws-terraform.yml'
 
 jobs:
   Terraform-Deploy:
@@ -42,6 +42,7 @@ jobs:
 
     - name: Update Pull Request
       uses: actions/github-script@0.9.0
+      if: github.event_name == 'pull_request'
       env:
         PLAN: "terraform\n${{ steps.plan.outputs.stdout }}"
       with:
