@@ -25,19 +25,19 @@ jobs:
 
     - name: Terraform Format
       id: fmt
-      run: cd resources/aws && terraform fmt -check
+      run: terraform -chdir=resources/aws fmt -check
 
     - name: Terraform Init
       id: init
-      run: cd resources/aws && terraform init
+      run: terraform -chdir=resources/aws init
 
     - name: Terraform Validate
       id: validate
-      run: cd resources/aws && terraform validate -no-color
+      run: terraform -chdir=resources/aws validate -no-color
 
     - name: Terraform Plan
       id: plan
-      run: cd resources/aws && terraform plan -no-color
+      run: terraform -chdir=resources/aws plan -no-color
       continue-on-error: true
 
     - name: Update Pull Request
@@ -76,5 +76,5 @@ jobs:
 
     - name: Terraform Apply
       if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-      run: cd resources/aws && ls -alth && echo "something works" # cd resources/aws && terraform apply -auto-approve
+      run: ls -alth && echo "something works" # terraform -chdir=resources/aws apply -auto-approve
 
